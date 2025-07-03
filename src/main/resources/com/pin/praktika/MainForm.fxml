@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.pin.praktika.MainController">
+
+    <!-- Панель инструментов сверху -->
+    <top>
+        <ToolBar>
+            <HBox>
+                <Label text="Дата начала:"/>
+                <DatePicker fx:id="startDatePicker"/>
+
+                <Label text="Количество дней:"/>
+                <TextField fx:id="daysField" prefWidth="50"/>
+
+                <Label text="Дата окончания:"/>
+                <TextField fx:id="endDateField" editable="false" style="-fx-opacity: 1;" prefWidth="120"/>
+
+                <Button text="Применить фильтр" onAction="#applyFilter"/>
+                <Button text="Сбросить" onAction="#resetFilter"/>
+
+                <Pane HBox.hgrow="ALWAYS"/>
+
+                <Button text="Добавить сотрудника" onAction="#showAddEmployeeDialog"/>
+                <Button text="Изменить сотрудника" onAction="#showEditEmployeeDialog"/>
+                <Button text="Удалить сотрудника" onAction="#deleteSelectedEmployee"/>
+            </HBox>
+        </ToolBar>
+    </top>
+
+    <!-- Основной контент -->
+    <center>
+        <TabPane fx:id="tabPane">
+            <!-- Вкладка: Все сотрудники -->
+            <Tab text="Все сотрудники">
+                <TableView fx:id="allEmployeesTable">
+                    <columns>
+                        <TableColumn text="Фамилия" fx:id="lastNameCol"/>
+                        <TableColumn text="Имя" fx:id="firstNameCol"/>
+                        <TableColumn text="Отчество" fx:id="middleNameCol"/>
+                        <TableColumn text="Дата рождения" fx:id="birthDateCol"/>
+                        <TableColumn text="Отдел" fx:id="departmentCol"/>
+                        <TableColumn text="Должность" fx:id="positionCol"/>
+                    </columns>
+                </TableView>
+            </Tab>
+
+            <!-- Вкладка: Юбиляры -->
+            <Tab text="Юбиляры">
+                <TableView fx:id="jubilariansTable">
+                    <columns>
+                        <TableColumn text="Фамилия" fx:id="lastNameJubCol"/>
+                        <TableColumn text="Имя" fx:id="firstNameJubCol"/>
+                        <TableColumn text="Отчество" fx:id="middleNameJubCol"/>
+                        <TableColumn text="Дата рождения" fx:id="birthDateJubCol"/>
+                        <TableColumn text="Возраст" fx:id="ageJubCol"/>
+                        <TableColumn text="Отдел" fx:id="departmentJubCol"/>
+                        <TableColumn text="Должность" fx:id="positionJubCol"/>
+                    </columns>
+                </TableView>
+            </Tab>
+
+            <!-- Вкладка: Полюбиляры -->
+            <Tab text="Полюбиляры">
+                <TableView fx:id="semiJubilariansTable">
+                    <columns>
+                        <TableColumn text="Фамилия" fx:id="lastNameSemiJubCol"/>
+                        <TableColumn text="Имя" fx:id="firstNameSemiJubCol"/>
+                        <TableColumn text="Отчество" fx:id="middleNameSemiJubCol"/>
+                        <TableColumn text="Дата рождения" fx:id="birthDateSemiJubCol"/>
+                        <TableColumn text="Возраст" fx:id="ageSemiJubCol"/>
+                        <TableColumn text="Отдел" fx:id="departmentSemiJubCol"/>
+                        <TableColumn text="Должность" fx:id="positionSemiJubCol"/>
+                    </columns>
+                </TableView>
+            </Tab>
+        </TabPane>
+    </center>
+
+</BorderPane>
